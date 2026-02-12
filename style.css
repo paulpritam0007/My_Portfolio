@@ -161,8 +161,30 @@ nav {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: fadeInUp 1s ease;
     line-height: 1.2;
+    min-height: 1.2em;
+    position: relative;
+}
+
+/* Typing cursor effect */
+#typing-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+    margin-left: 2px;
+}
+
+#typing-text.typing-complete::after {
+    animation: none;
+    opacity: 0;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
 }
 
 .hero-content p {
@@ -419,15 +441,15 @@ nav {
     nav {
         padding: 25px 30px;
     }
-    
+
     .nav-links {
         gap: 25px;
     }
-    
+
     .projects, .skills, .contact {
         padding: 80px 20px;
     }
-    
+
     .section-title {
         margin-bottom: 60px;
     }
@@ -439,7 +461,7 @@ nav {
         padding: 20px;
         background: rgba(10,10,10,0.95);
     }
-    
+
     .logo {
         font-size: 24px;
     }
@@ -447,7 +469,7 @@ nav {
     .menu-toggle {
         display: flex;
     }
-    
+
     .nav-links {
         position: fixed;
         top: 0;
@@ -467,48 +489,48 @@ nav {
     .nav-links.active {
         left: 0;
     }
-    
+
     .nav-links a {
         font-size: 18px;
         padding: 10px 0;
     }
-    
+
     .hero {
         padding: 100px 20px 50px;
     }
-    
+
     .hero-content p {
         margin-bottom: 30px;
     }
-    
+
     .cta-button {
         padding: 15px 35px;
     }
-    
+
     .projects, .skills, .contact {
         padding: 60px 15px;
     }
-    
+
     .section-title {
         margin-bottom: 40px;
     }
-    
+
     .project-grid {
         gap: 20px;
     }
-    
+
     .project-card {
         min-height: 400px;
     }
-    
+
     .project-content {
         padding: 25px;
     }
-    
+
     .skills-grid {
         gap: 15px;
     }
-    
+
     .skill-item {
         padding: 20px 10px;
     }
@@ -521,23 +543,23 @@ nav {
         gap: 10px;
         align-items: center;
     }
-    
+
     .hero-content h1 {
         margin-bottom: 15px;
     }
-    
+
     .cta-button {
         padding: 12px 30px;
     }
-    
+
     .project-card {
         min-height: 350px;
     }
-    
+
     .project-content {
         padding: 20px;
     }
-    
+
     .social-links {
         gap: 20px;
     }
