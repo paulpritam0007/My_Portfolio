@@ -99,6 +99,46 @@ window.addEventListener('resize', function() {
     canvas.height = window.innerHeight;
 });
 
+// Typing Animation for Name
+const typingText = document.getElementById('typing-text');
+const textToType = 'PRITAM PAUL';
+let charIndex = 0;
+let hasTyped = false; // Flag to ensure typing happens only once
+
+function typeWriter() {
+    if (charIndex < textToType.length) {
+        typingText.textContent += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 150); // Adjust speed here (150ms per character)
+    } else {
+        // Remove cursor after typing is complete
+        setTimeout(() => {
+            typingText.classList.add('typing-complete');
+        }, 500);
+    }
+}
+
+// Intersection Observer to trigger typing when home section is visible
+const heroSection = document.getElementById('home');
+
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5 // Trigger when 50% of the section is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasTyped) {
+            hasTyped = true; // Set flag to true so it only runs once
+            setTimeout(typeWriter, 500); // Small delay before starting
+            observer.unobserve(heroSection); // Stop observing after first trigger
+        }
+    });
+}, observerOptions);
+
+observer.observe(heroSection);
+
 // Hamburger menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -135,16 +175,16 @@ projectCards.forEach(function(card) {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const rotateX = (y - centerY) / 20;
         const rotateY = (centerX - x) / 20;
-        
+
         card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-10px)';
     });
-    
+
     card.addEventListener('mouseleave', function() {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
