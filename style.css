@@ -247,6 +247,48 @@ nav {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+.cta-button,
+.cv-button {
+    padding: 18px 45px;
+    font-size: clamp(16px, 2vw, 18px);
+    color: #fff;
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s backwards;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button::before,
+.cv-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before,
+.cv-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-button:hover,
+.cv-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 40px rgba(255, 0, 110, 0.4);
+}
 
 .project-grid {
     display: grid;
